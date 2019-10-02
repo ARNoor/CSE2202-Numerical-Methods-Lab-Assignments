@@ -12,15 +12,15 @@ double deriv(double x){
 
 void newton_raphson_method(double x0){
     double x1 = x0;
-    double x2 = x1 - (func(x1)/deriv(x1));
-
+    double a = func(x1);
+    double b = deriv(x1);
+    double x2 = x1 - (a/b);
+    int n=1;
     while(abs(x2-x1)/abs(x2) >= 0.001){
-
-        double x1 = x2;
-        double a = func(x1);
-        double b = deriv(x1);
-        double x2 = x1 - (a/b);
-        int n=1;
+        x1 = x2;
+        a = func(x1);
+        b = deriv(x1);
+        x2 = x1 - (a/b);
         cout<<"iteration "<<n<<"\tX1 = "<<x1<<"\tX2 = "<<x2<<"\tError: "<<abs(x2-x1)/abs(x2)<<endl;
         n++;
     }
